@@ -1,19 +1,16 @@
 import { Router } from "express";
-import {
-  createUpdateCategory,
-  getCategories,
-  deleteCategory,
-  viewCategory,
-  detailsWithQuestionCount,
-} from "../controller/categoryController.js";
+import CategoryController from "../controller/categoryController.js";
 
 const router = Router();
 
 router
-  .get("/list", getCategories)
-  .post("/create-update", createUpdateCategory)
-  .delete("/delete/:id", deleteCategory)
-  .get("/details-with-question-count", detailsWithQuestionCount)
-  .get("/:id", viewCategory);
+  .get("/list", CategoryController.getCategories)
+  .post("/create-update", CategoryController.createUpdateCategory)
+  .delete("/delete/:id", CategoryController.deleteCategory)
+  .get(
+    "/details-with-question-count",
+    CategoryController.detailsWithQuestionCount
+  )
+  .get("/:id", CategoryController.viewCategory);
 
 export default router;
